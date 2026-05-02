@@ -1,20 +1,52 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  /* Color tokens */
+  --background: #FAFAFA;
+  --foreground: #0F172A;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
+  --accent: #0052FF;
+  --accent-secondary: #4D7CFF;
+  --accent-foreground: #FFFFFF;
+  --border: #E2E8F0;
+  --card: #FFFFFF;
+  --ring: #0052FF;
+
+  /* Gradients */
+  --gradient-accent: linear-gradient(135deg, #0052FF, #4D7CFF);
+  --gradient-accent-text: linear-gradient(90deg, #0052FF, #4D7CFF);
+
+  /* Typography */
+  --font-display: 'Calistoga', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Radii */
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.08);
+  --shadow-xl: 0 20px 25px rgba(0,0,0,0.1);
+  --shadow-accent: 0 4px 14px rgba(0,82,255,0.25);
+  --shadow-accent-lg: 0 8px 24px rgba(0,82,255,0.35);
+
+  /* Misc */
+  --border-hairline: 0.5px solid rgba(30,41,59,0.12);
+  --grain-light: url('/grain-light.png');
+  --grain-dark: url('/grain-dark.png');
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #020617;
     --foreground: #ededed;
   }
 }
@@ -22,5 +54,46 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+  min-height: 100vh;
+  background-image: var(--grain-light);
+  background-size: 400px 400px;
+  transition: background 0.3s;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: var(--grain-dark);
+  }
+}
+
+/* Spotlight radial gradient for main canvas */
+.spotlight-bg {
+  background: radial-gradient(ellipse at center, rgba(79,70,229,0.08) 0%, transparent 70%);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255,255,255,0.10);
+  border: 0.5px solid rgba(30,41,59,0.10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Hairline border utility */
+.hairline {
+  border-width: 0.5px;
+  border-style: solid;
+  border-color: rgba(30,41,59,0.12);
+}
+
+/* Hide scrollbars for a cleaner look */
+::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(30,41,59,0.08);
+  border-radius: 4px;
 }
